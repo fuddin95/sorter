@@ -7,18 +7,16 @@ exports.Sorter = void 0;
 - so when you want to use this class it will need an argument a instace of NumbersCollection since it is its input parameter type
 */
 var Sorter = /** @class */ (function () {
-    //constructor(public collection: NumbersCollection) {} old and less efficient version
-    function Sorter(collection) {
-        this.collection = collection;
+    function Sorter() {
     }
     Sorter.prototype.sort = function () {
-        var length = this.collection.length; //destructuring and getting length of the collection
+        var length = this.length; //destructuring and getting length of the collection
         //bubble sorting algorithm
         for (var i = 0; i < length; i++) {
             for (var j = 0; j < length - i - 1; j++) {
-                //if collection is an array of number
-                if (this.collection.compare(j)) {
-                    this.collection.swap(j);
+                //if collection is an array of number or string
+                if (this.compare(j)) {
+                    this.swap(j);
                 }
             }
         }

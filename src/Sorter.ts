@@ -4,19 +4,22 @@
 - so by passing NumberCollection Class as a parameter the functions of that class are also available to this class
 - so when you want to use this class it will need an argument a instace of NumbersCollection since it is its input parameter type
 */
-export class Sorter {
+export abstract class Sorter {
   //constructor(public collection: NumbersCollection) {} old and less efficient version
-  constructor(public collection: SorterChecker) {}
+  //constructor(public collection: SorterChecker) {} //removing constructor so we dont have to instentiate it every time
+  abstract compare(index: number): boolean;
+  abstract swap(index: number): void;
+  abstract length: number;
 
   sort(): void {
-    const { length } = this.collection; //destructuring and getting length of the collection
+    const { length } = this; //destructuring and getting length of the collection
     //bubble sorting algorithm
 
     for (let i = 0; i < length; i++) {
       for (let j = 0; j < length - i - 1; j++) {
-        //if collection is an array of number
-        if (this.collection.compare(j)) {
-          this.collection.swap(j);
+        //if collection is an array of number or string
+        if (this.compare(j)) {
+          this.swap(j);
         }
       }
     }
